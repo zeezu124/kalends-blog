@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('age');
             $table->date('date_of_birth');
             $table->string('image_url')->nullable();
-            $table->enum('user_type', UserType::toValues());
+            $table->enum('user_type', UserType::getValues());
             $table->unsignedBigInteger('user_id'); // Foreign key to the users table
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

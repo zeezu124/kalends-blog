@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->enum('status', CommentStatus::toValues());
+            $table->enum('status', CommentStatus::getValues())->default(CommentStatus::Published);
             $table->unsignedBigInteger('profile_id'); // Foreign key to the profiles table
             $table->foreign('profile_id')->references('id')->on('profiles');
             $table->unsignedBigInteger('playlist_id'); // Foreign key to the playlists table
