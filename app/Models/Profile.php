@@ -13,6 +13,17 @@ class Profile extends Model
 {
     use HasFactory;
 
+    const STATUS_PUBLISHED = 'published';
+    const STATUS_EDITED = 'edited';
+    const STATUS_DELETED = 'deleted';
+
+    const VALID_STATUSES = [
+        self::STATUS_PUBLISHED,
+        self::STATUS_EDITED,
+        self::STATUS_DELETED,
+    ];
+
+
     /**
      * The attributes that are mass assignable.
      *
