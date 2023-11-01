@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\UserType;
 use App\Models\User;
 use App\Models\Playlist;
 use Illuminate\Database\Eloquent\Model;
@@ -12,16 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Profile extends Model
 {
     use HasFactory;
-
-    const STATUS_PUBLISHED = 'published';
-    const STATUS_EDITED = 'edited';
-    const STATUS_DELETED = 'deleted';
-
-    const VALID_STATUSES = [
-        self::STATUS_PUBLISHED,
-        self::STATUS_EDITED,
-        self::STATUS_DELETED,
-    ];
 
 
     /**
@@ -36,6 +27,11 @@ class Profile extends Model
         'date_of_birth',
         'image_url',
         'user_type',
+    ];
+
+    protected $casts = [
+        'date_of_birth' => 'datetime:Y-m-d',
+        'user_type' => UserType::class,
     ];
 
     /**

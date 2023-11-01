@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CommentStatus;
 use App\Models\Profile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,6 +20,10 @@ class Comment extends Model
     protected $fillable = [
         "content",
         "status",
+    ];
+
+    protected $casts = [
+        "status"=> CommentStatus::class,
     ];
 
     /**
